@@ -5,9 +5,6 @@ t = $(ca)
 all: $(t).crt
 	$(RM) *.key
 
-clean:
-	@git clean -X || echo "run git config clean.requireForce false"
-
 SIG = openssl x509 -days $(days) -req -in $*.req -out $*.crt -CAcreateserial
 ifeq ($(t),$(ca))
 %.crt: %.req %.key
